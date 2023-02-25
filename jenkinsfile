@@ -1,6 +1,13 @@
 pipeline {
     agent any
     stages {
+    
+    stage ('cleanup') {
+    steps{
+    cleanWs()
+    }
+    
+    }
         stage ('checkout') {
             steps {
                  checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '6d7abed1-a7c1-4c6f-9774-2dba7df6d8fe', url: 'https://github.com/teja0609/tejesh.k.git']])
@@ -9,7 +16,6 @@ pipeline {
         stage ('build') {
                 
              steps {
-             cleanWs()
                 sh 'cd testmaven/testmaven-main'
             }
         }
