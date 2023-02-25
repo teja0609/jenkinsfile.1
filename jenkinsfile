@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage ('checkout') {
+            steps {
+                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: '6d7abed1-a7c1-4c6f-9774-2dba7df6d8fe', url: 'https://github.com/teja0609/tejesh.k.git']])
+            }
+        }
+        stage ('build') {
+            steps {
+                sh 'cd testmaven/testmaven-main'
+            }
+        }
+        stage ('deploy to tomcat') {
+            steps {
+                deploy adapters: [tomcat9(credentialsId: '8bac8087-7a5a-44ef-94f6-3b9976848c2f', path: '', url: 'http://104.208.70.129:8080/')], contextPath: null, war: '**/*.war'
+            }
+        }
+    }
+}
