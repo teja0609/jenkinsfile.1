@@ -6,7 +6,7 @@
   <groupId>com.mt</groupId>
   <artifactId>maven-teja-project</artifactId>
   <packaging>war</packaging>
-  <version>1.11-SNAPSHOT</version>
+  <version>1.11-Tejesh</version>
   <name>Maven Web Project 22nd April</name>
   <description>Maven Web Project for Java</description>
 
